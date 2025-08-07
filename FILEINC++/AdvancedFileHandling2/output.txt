@@ -1,0 +1,10 @@
+jaguar
+12120 2.3424e+08
+BMW
+22000 740000
+Toyota
+830 543999
+Chevrolet
+22 3449.9
+Chevrolet
+22 3449.90

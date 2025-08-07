@@ -1,0 +1,28 @@
+/*********************************************************************/
+1)printf the dna sequence
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+	map<string,char > DNAhardcode;
+	DNAhardcode["00"] = 'A';
+	DNAhardcode["01"] = 'T';
+	DNAhardcode["10"] = 'C';
+	DNAhardcode["11"] = 'G';
+	int testcases;
+	cin >> testcases;
+	while(testcases--){
+	    int len;
+	    cin >> len;
+	    string sequence;
+	    cin >> sequence;
+	    for(int i = 0; i<len; i+=2){
+	        cout <<DNAhardcode[sequence.substr(i,2)];
+	    }
+	    cout << endl;
+	}
+	return 0;
+}
+/*********************************************************************/

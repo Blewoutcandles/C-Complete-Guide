@@ -1,0 +1,8 @@
+Emily Robinson
+Walter Lewis
+Einstein Albert
+Thomas Levie
+Emily Robinson       21.2
+Walter Lewis         42.4
+Einstein Albert      55.2
+Thomas Levie         78.3
