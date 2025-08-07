@@ -1,0 +1,102 @@
+ 
+*********************************************************************
+Assignment #5:
+Purpose: To test one's ability to develop overloaded functions.
+Title: Basic Calculator with Function Overloading
+*********************************************************************
+Problem statement:
+Write a C++ program that implements a simple calculator.
+The program should have a Calculator class that supports basic arithmetic operations using overloaded functions to handle various data types and input variations.
+ 
+Calculator Class:
+  A public method add with overloaded variants:
+    Accepts two integers and returns their sum.
+    Accepts three integers and returns their sum.
+    Accepts two doubles and returns their sum.
+  A public method subtract with overloaded variants:
+    Accepts two integers and returns the result of subtracting the second from the first.
+    Accepts two doubles and returns the result of subtracting the second from the first.
+  A public method multiply with overloaded variants:
+    Accepts two integers and returns their product.
+    Accepts three integers and returns their product.
+  A public method divide with overloaded variants:
+    Accepts two integers and returns the result of dividing the first by the second, unless the second is zero, in which case it should throw an error or return an appropriate message.
+    Accepts two doubles and returns the result of dividing the first by the second, with similar handling for division by zero.
+ 
+main():
+  Create an instance of the Calculator class.
+  Test all overloaded variants of the add, subtract, multiply, and divide methods with various inputs and output the results.
+  Handle division by zero scenarios and ensure appropriate messages or exceptions are thrown.
+ 
+Test Case 1: Addition Overloads
+  Add two integers (2, 3): Expected output 5
+  Add three integers (1, 2, 3): Expected output 6
+  Add two doubles (1.5, 2.5): Expected output 4.0
+ 
+Test Case 2: Subtraction Overloads
+  Subtract two integers (10, 3): Expected output 7
+  Subtract two doubles (5.5, 2.2): Expected output 3.3
+ 
+Test Case 3: Multiplication Overloads
+  Multiply two integers (2, 3): Expected output 6
+  Multiply three integers (1, 2, 3): Expected output 6
+ 
+Test Case 4: Division Overloads
+  Divide two integers (10, 2): Expected output 5
+  Divide two doubles (10.0, 2.5): Expected output 4.0
+  Attempt to divide by zero with integers (10, 0): Expected output Error: Division by zero
+  Attempt to divide by zero with doubles (10.0, 0.0): Expected output Error: Division by zero
+ 
+*********************************************************************
+Assignment #6:
+Purpose: To test one's ability to make use of simple inheritance.
+Title: Vehicle Hierarchy with Inheritance
+*********************************************************************
+Problem statement:
+Write a C++ program that models a simple hierarchy of vehicles.
+The program should have a base class Vehicle with derived classes Car and Motorcycle.
+Use simple inheritance to represent common properties of vehicles in the base class and specific properties in the derived classes.
+ 
+Vehicle Class (Base Class):
+  Protected member make to represent the vehicle's make (e.g., "Toyota").
+  Protected member model to represent the vehicle's model (e.g., "Corolla").
+  Protected member year to represent the year the vehicle was manufactured.
+  Public constructor that accepts make, model, and year.
+  Public method display() to print the vehicle's make, model, and year.
+ 
+Car Class (Derived Class):
+  Inherits from Vehicle.
+  Additional private member numberOfDoors to represent the number of doors the car has.
+  Public constructor that accepts make, model, year, and numberOfDoors.
+  Public method display() that overrides Vehicle::display() and also prints the number of doors.
+ 
+Motorcycle Class (Derived Class):
+  Inherits from Vehicle.
+  Additional private member hasSidecar to indicate whether the motorcycle has a sidecar.
+  Public constructor that accepts make, model, year, and a boolean hasSidecar.
+  Public method display() that overrides Vehicle::display() and also prints whether the motorcycle has a sidecar.
+ 
+main():
+  Create instances of Car and Motorcycle with various properties.
+  Call the display() method on each instance to output their details.
+  Demonstrate that the derived classes inherit properties from the base class, while also introducing their own unique properties.
+ 
+Test Case 1: Basic Vehicle Inheritance
+  Create a car with make = "Toyota", model = "Corolla", year = 2020, numberOfDoors = 4.
+  Create a motorcycle with make = "Harley-Davidson", model = "Street 750", year = 2019, hasSidecar = false.
+  Display details of both vehicles.
+  Expected output:
+  Car: Toyota Corolla (2020), Doors: 4
+  Motorcycle: Harley-Davidson Street 750 (2019), Sidecar: No
+ 
+Test Case 2: Motorcycle with Sidecar
+  Create a motorcycle with make = "Harley-Davidson", model = "Electra Glide", year = 2021, hasSidecar = true.
+  Display details of the motorcycle.
+  Expected output:
+  Motorcycle: Harley-Davidson Electra Glide (2021), Sidecar: Yes
+ 
+Test Case 3: Additional Cars
+  Create a car with make = "Honda", model = "Civic", year = 2018, numberOfDoors = 2.
+  Display details of the car.
+  Expected output:
+  Car: Honda Civic (2018),

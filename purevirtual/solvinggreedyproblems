@@ -1,0 +1,47 @@
+================================================================================= A greedy algorithm is an algorithmic paradigm that follows the problem-solving heuristic of making the locally optimal choice at each stage with the hope of finding a global optimum. In other words, a greedy algorithm makes the locally best choice at each stage with the hope of finding a global optimum solution.
+
+To solve a problem using a greedy algorithm, you can follow these steps:
+
+1.Identify the greedy choice property (GCP) of the problem. This means that you need to find a way to make a locally optimal choice that will lead to a global optimal solution.
+
+2.Determine the optimal substructure of the problem. This means that you need to find a way to break down the problem into smaller subproblems that can be solved independently.
+
+3.Design a greedy algorithm to solve the problem. This means that you need to find a way to make the greedy choice at each step in a way that will lead to a globally optimal solution.
+
+To improve the performance of a greedy algorithm, you can try the following techniques:
+
+1.Use a more efficient data structure to store and access the data. This can help reduce the time complexity of the algorithm.
+
+2.Use a smarter way of making the greedy choice at each step. This can help you find a better solution in fewer steps.
+
+3.Use dynamic programming to solve the problem. Dynamic programming is a technique that allows you to solve complex problems by breaking them down into smaller subproblems and storing the solutions to these subproblems in a table.
+
+4.Use approximation algorithms to solve the problem. Approximation algorithms are algorithms that find a solution that is close to the optimal solution, but not necessarily the optimal solution itself. These algorithms can be useful when the optimal solution is too expensive to compute.
+
+I hope this helps!
+class Solution {
+public:
+    vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) {
+        std::vector<std::vector<int>> result;
+        result.resize(2);
+        constexpr size_t offset = 1'000;
+        std::array<int, 2'001> histo1{};
+        std::array<int, 2'001> histo2{};
+        for (auto& v : nums1) {
+            ++histo1[v + offset];
+        }
+        for (auto& v : nums2) {
+            ++histo2[v + offset];
+        }
+
+        for (size_t i = 0; i < histo1.size(); ++i) {
+            if (histo1[i] && !histo2[i]) {
+                result[0].push_back(i - offset);
+            }
+            if (histo2[i] && !histo1[i]) {
+                result[1].push_back(i - offset);
+            }
+        }
+        return result;
+    }
+};

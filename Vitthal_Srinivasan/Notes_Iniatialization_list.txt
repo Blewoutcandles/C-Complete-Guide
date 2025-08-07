@@ -1,0 +1,104 @@
+Note: 
+    whenever we have some constructor in class like:
+
+    class Bankaccount{
+    private:
+        const std :: string name;
+        const float balance;
+
+    public:
+        Bankaccount (std::string name, float balance);
+        void update_credit_card(std:: string n);
+        void update_credit_card_limit(float l);
+        void display() const;
+
+};
+we have this declaration which we have COLON at the function starting line and have initialization list with
+curly braces.
+1-----------
+Bankaccount :: Bankaccount(string name, float balance):
+    name(name), balance(balance){
+    
+}
+//the above comma separated initialization is called the initialization list
+The initializationlist is very important and is useful for member variables to have like const 
+and const references however see the below is the same version of the above, but it does not support the
+const and const references members
+
+2----------------
+Bankaccount :: Bankaccount(string name, float balance){
+    name(name);
+    balance(balance);
+}
+This declaration works fine for normal member variable and does not work for the const and const references 
+also leads to performance degradation. why is that?? because the member variables with const keyword will
+be constructed at the starting of the constructor invoking function. however name(name); statements like this
+will have separate constructor invoking for them apart from the initial one.
+so there may occur errors.
+
+In order to mitigate the error we have to best use the initialization list.
+ERROR scenario: When invoking two constructor will cause some overloading functions.
+
+*************************DEFAULT CONSTRUCTOR********************************************
+    class Bankaccount{
+    private:
+         std :: string name;
+        float balance;
+
+    public:
+        Bankaccount (std::string name, float balance);
+        void update_credit_card(std:: string n);
+        void update_credit_card_limit(float l);
+        void display() const;
+
+};suppose we have the above class
+
+We initialize the class member variable using 
+in main.cpp:
+
+Bankaccount sam_account;
+
+in bankaccount.h file:
+
+Bankaccount() = default;
+Bankaccount(string name= "Unknown", float balance = 100);//assigning is completely possible
+//the code does not generate any erros it is like assigning the default values to the variables if not assigning 
+by the user for the sam_account
+
+
+Considering the abpve scenario we have invoked bankaccount class to create the sam_account
+however we have two constructors which acts like assinging the default values
+
+The compiler might be confused as to invoke which constructor.
+How to mitigate the above error:
+ 
+ 1)Whether we can either assign one of the two parameters in the 
+ Bankaccount(string name, float balance = 100);    or
+  Bankaccount(string name ="Unknown", float balance);
+  in the above case due to assignation of ano one of the values the constructor for sam_account, will not invoke 
+  any of the above
+
+  It will invoke the default constructor for this.
+2)or we can use some parameters for the constructor like giving name alone or account balance .
+
+***********************************************************************************************************
+Nuances of the initialization list: 
+which can be used to initialize the const member variables or the members.
+
+const string&name;
+const float & balance;
+
+const string& get_name() const;    
+const float& get_balance () const;
+The above variables of const can be used only using initialization list and there is definitely going to be an
+error if you are using semicolon based initialization.
+const string&get_name() const {
+    return name;
+}
+
+const float& get_balance () const{
+    return balance;
+}
+
+
+ 
